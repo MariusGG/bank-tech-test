@@ -41,6 +41,10 @@ describe Client do
       subject.withdraw(500, '08-10-2018')
     end
 
+    it 'subtracts the withdrawal amount from the balance' do
+      expect { subject.withdraw(500, '08-10-2018') }.to change{ subject.balance }.by(-500)
+    end
+
   end
 
 end

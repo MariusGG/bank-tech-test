@@ -19,7 +19,7 @@ describe 'Bank Test Features' do
 
       it 'Subtracts the withdrawal amount from their balance' do
         client.withdraw(500, '08-10-2018')
-        expect(subject.balance).to eq 500
+        expect(client.balance).to eq 500
       end
 
     end
