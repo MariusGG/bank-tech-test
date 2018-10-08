@@ -4,9 +4,12 @@ describe 'Print Transaction History' do
 
   describe '#print_statement' do
     before do
-      client.deposit(1000, '10-01-2012')
-      client.deposit(2000, '13-01-2012')
-      client.withdraw(500, '14-01-2012')
+      allow(Time).to receive(:now).and_return(Time.mktime(2012, 1, 10))
+      client.deposit(1000)
+      allow(Time).to receive(:now).and_return(Time.mktime(2012, 1, 13))
+      client.deposit(2000)
+      allow(Time).to receive(:now).and_return(Time.mktime(2012, 1, 14))
+      client.withdraw(500)
     end
 
     it 'pretty prints the transaction history' do

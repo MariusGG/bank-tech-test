@@ -2,8 +2,8 @@ require 'transaction_printer'
 
 describe TransactionPrinter do
 
-  let(:transaction1) { double :transaction, date: '10-01-2012', credit: 1000, debit: nil, balance: 1000 }
-  let(:transaction2) { double :transaction, date: '11-01-2012', credit: nil, debit: 500, balance: 500 }
+  let(:transaction1) { double :transaction, date: '10/01/2012', credit: 1000, debit: nil, balance: 1000 }
+  let(:transaction2) { double :transaction, date: '11/01/2012', credit: nil, debit: 500, balance: 500 }
 
   it { is_expected.to respond_to(:pretty_print).with(1).argument }
 

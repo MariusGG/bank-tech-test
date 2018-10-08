@@ -13,18 +13,18 @@ class Client
     @transactions = []
   end
 
-  def deposit(amount, date)
+  def deposit(amount)
     @balance += amount
-    transaction = @transaction_klass.new(date: date,
+    transaction = @transaction_klass.new(date: determine_date,
                                           credit: amount,
                                           balance: @balance)
     @transactions.push(transaction)
   end
 
-  def withdraw(amount, date)
+  def withdraw(amount)
     insufficient_funds?(amount)
     @balance -= amount
-    transaction = @transaction_klass.new(date: date,
+    transaction = @transaction_klass.new(date: determine_date,
                                           debit: amount,
                                           balance: @balance)
     @transactions.push(transaction)
@@ -38,6 +38,10 @@ class Client
 
   def insufficient_funds?(amount)
     fail 'Insufficient funds' if amount > @balance
+  end
+
+  def determine_date
+    Time.now.strftime("%d/%m/%Y")
   end
 
 end
