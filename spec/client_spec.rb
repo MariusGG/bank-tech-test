@@ -7,15 +7,12 @@ describe Client do
   subject { described_class.new(transaction_klass) }
 
   describe '#initialize' do
-
     it 'initializes with balance equal to 0' do
       expect(subject.balance).to eq 0
     end
-
   end
 
   describe '#deposit' do
-
     it { is_expected.to respond_to(:deposit).with(2).arguments }
 
     it 'creates a new Transaction object' do
@@ -34,9 +31,7 @@ describe Client do
   end
 
   describe '#withdraw' do
-
     context 'Given sufficient funds' do
-
       before do
         subject.deposit(1000, '08-10-2018')
       end
@@ -61,7 +56,6 @@ describe Client do
         expect { subject.withdraw(500, '08-10-2018') }.to raise_error('Insufficient funds')
       end
     end
-
   end
 
 end
