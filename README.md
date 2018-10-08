@@ -38,14 +38,53 @@ Including an edge case for withdrawal:
 
 ```
 As a bank
-So we don't lend money unintentionally
+So I don't lend money unintentionally
 I want to prevent clients from withdrawing more than their balance
 
 ```
 Including an extra feature to improve user experience:
 
 ```
-As a client
+As a banking client
 So it is easier for me to deposit and withdraw money
 I want the app to determine the date of my transaction
 ```
+
+
+## Domain Model
+
+```
+    User
+╔════════════╗  
+║            ║ Interacts with application
+║  Terminal  ║ via REPL, e.g. IRB     
+║            ║
+╚════════════╝
+      |
+      |
+      |                                   
+╔════════════╗     
+║            ║  - Maintains the current balance     
+║   Client   ║  - Maintains an array of Transaction objects
+║  (class)   ║  - Instantiate objects and invokes methods on them    
+╚════════════╝      
+       |                           ╔════════════╗
+       |                           ║            ║ - Generates a formatted date        
+       |-------------------------->║Transaction ║ - Holds the state of the transaction
+       |                           ║  (class)   ║ 
+       |                           ╚════════════╝  
+       |                             
+       |                           ╔════════════╗ 
+       |                           ║            ║ - Has no state
+       |-------------------------->║   Printer  ║ - Formats the transaction history as a pretty string
+                                   ║  (module)  ║
+                                   ╚════════════╝            
+                                            
+```
+
+## Approach
+- Why choose Ruby
+- Process and methodology
+- Things that could be improved
+
+
