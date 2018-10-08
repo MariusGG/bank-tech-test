@@ -1,11 +1,28 @@
 describe 'Bank Test Features' do
 
   let(:client) { Client.new }
-  
-  context 'Client can deposit money into their account' do
+
+  describe 'Client can deposit money into their account' do
     it 'Adds deposit money to their account balance' do
       client.deposit(500, "08-10-2018")
       expect(client.balance).to eq 500
     end
+  end
+
+  describe 'Client can withdraw money from their account' do
+
+    context 'Given the client balance is greater than the withdrawal amount' do
+
+      before do
+        client.deposit(1000, '08-10-2018')
+      end
+
+      it 'Subtracts the withdrawal amount from their balance' do
+        client.withdraw(500, '08-10-2018')
+        expect(subject.balance).to eq 500
+      end
+
+    end
+
   end
 end
