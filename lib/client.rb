@@ -1,3 +1,6 @@
+require_relative './transaction'
+require_relative './transaction_printer'
+
 class Client
 
   attr_reader :balance, :transactions
@@ -28,7 +31,7 @@ class Client
   end
 
   def print_statement
-    @transaction_printer.pretty_print(@transactions)
+    print @transaction_printer.pretty_print(@transactions)
   end
 
   private

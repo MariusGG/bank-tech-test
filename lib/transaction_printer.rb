@@ -1,7 +1,7 @@
 module TransactionPrinter
 
   def self.pretty_print(transactions)
-    'date || credit || debit || balance\n' + format_history(transactions)
+    "date || credit || debit || balance\n#{format_history(transactions)}\n"
   end
 
   def self.format_history(transactions)
@@ -10,7 +10,7 @@ module TransactionPrinter
       "#{format_number(transaction.credit)} || "\
       "#{format_number(transaction.debit)} || "\
       "#{format_number(transaction.balance)}"
-    }.join('\n')
+    }.join("\n")
   end
 
   def self.format_date(date)
