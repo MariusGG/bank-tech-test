@@ -6,7 +6,7 @@ describe Client do
   let(:transaction_klass) { double :transaction_klass, new: transaction }
   subject { described_class.new(transaction_klass) }
 
-  context '#initialize' do
+  describe '#initialize' do
 
     it 'initializes with balance equal to 0' do
       expect(subject.balance).to eq 0
@@ -14,7 +14,7 @@ describe Client do
 
   end
 
-  context '#deposit' do
+  describe '#deposit' do
 
     it { is_expected.to respond_to(:deposit).with(2).arguments }
 
@@ -32,6 +32,14 @@ describe Client do
       subject.deposit(500, '08-10-2018')
       expect(subject.balance).to eq 500
     end
+  end
+
+  describe '#withdraw' do
+
+    it 'creates a new Transaction object' do
+      expect(transaction_klass).to receive(:new).with(500, '08-10-2018').and_return(:transaction)
+    end
 
   end
+
 end
