@@ -1,12 +1,10 @@
-describe 'Deposit' do
+describe 'Feature: Deposit' do
 
   let(:client) { Client.new }
 
-  describe 'Client can deposit money into their account' do
-    it 'Adds deposit money to their account balance' do
-      client.deposit(500)
-      expect(client.balance).to eq 500
-    end
+  it 'adds the deposit money to the balance' do
+    client.deposit(500)
+    expect(client.balance).to eq 500
   end
 
 end
