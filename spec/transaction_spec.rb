@@ -4,30 +4,33 @@ describe Transaction do
 
   context '#initialize' do
 
-    it 'takes two arguments' do
-      expect { Transaction.new(date: '08-10-2018', balance: 500) }.not_to raise_error
+    it 'receives keyword arguments' do
+      expect { Transaction.new(balance: 500, credit: 500) }.not_to raise_error
     end
 
   end
 
   describe 'attr_readers' do
 
-    subject { described_class.new(date: '08-10-2018', credit: 500, balance: 500) }
+    before do
+      allow(Time).to receive(:now).and_return(Time.mktime(2018, 10, 8))
+      @transaction = Transaction.new(credit: 500, balance: 500)
+    end
 
     it 'returns the date provided' do
-      expect(subject.date).to eq '08-10-2018'
+      expect(@transaction.date).to eq '08/10/2018'
     end
 
     it 'returns the credit provided' do
-      expect(subject.credit).to eq 500
+      expect(@transaction.credit).to eq 500
     end
 
     it 'returns the debit provided' do
-      expect(subject.debit).to eq nil
+      expect(@transaction.debit).to eq nil
     end
 
     it 'returns the current balance' do
-      expect(subject.balance).to eq 500
+      expect(@transaction.balance).to eq 500
     end
   end
 
