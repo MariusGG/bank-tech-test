@@ -32,10 +32,20 @@ As a banking client
 So I can track my balance
 I would like to see my bank statement
 ```
-Including edge cases:
+
+Including an edge case for withdrawal:
+
 
 ```
 As a bank
 So we don't lend money unintentionally
 I want to prevent clients from withdrawing more than their balance
+
+```
+Including an extra feature to improve user experience:
+
+```
+As a client
+So it is easier for me to deposit and withdraw money
+I want the app to determine the date of my transaction
 ```
