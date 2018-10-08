@@ -33,7 +33,7 @@ describe 'Bank Test Features' do
     describe 'Client cannot withdraw money from their account' do
 
       it 'Raises error message' do
-        expect { client.withdraw(500, '08-10-2018') }.to raise_error("Insufficient funds")
+        expect { client.withdraw(500, '08-10-2018') }.to raise_error('Insufficient funds')
       end
 
     end

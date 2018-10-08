@@ -35,18 +35,31 @@ describe Client do
 
   describe '#withdraw' do
 
-    it 'creates a new Transaction object' do
-      expect(transaction_klass).to receive(:new).with(500, '08-10-2018').and_return(:transaction)
-      subject.withdraw(500, '08-10-2018')
+    context 'Given sufficient funds' do
+
+      before do
+        subject.deposit(1000, '08-10-2018')
+      end
+
+      it 'creates a new Transaction object' do
+        expect(transaction_klass).to receive(:new).with(500, '08-10-2018').and_return(:transaction)
+        subject.withdraw(500, '08-10-2018')
+      end
+
+      it 'adds the Transaction object into the transactions array' do
+        subject.withdraw(500, '08-10-2018')
+        expect(subject.transactions.last).to eq transaction
+      end
+
+      it 'subtracts the withdrawal amount from the balance' do
+        expect { subject.withdraw(500, '08-10-2018') }.to change { subject.balance }.by(-500)
+      end
     end
 
-    it 'adds the Transaction object into the transactions array' do
-      subject.withdraw(500, '08-10-2018')
-      expect(subject.transactions.length).to eq 1
-    end
-
-    it 'subtracts the withdrawal amount from the balance' do
-      expect { subject.withdraw(500, '08-10-2018') }.to change { subject.balance }.by(-500)
+    context 'Given insufficient funds' do
+      it 'raises error if withdrawal amount is greater than the balance' do
+        expect { subject.withdraw(500, '08-10-2018') }.to raise_error('Insufficient funds')
+      end
     end
 
   end
