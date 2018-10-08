@@ -17,7 +17,7 @@ describe Client do
     it { is_expected.to respond_to(:deposit).with(2).arguments }
 
     it 'creates a new Transaction object' do
-      expect(transaction_klass).to receive(:new).with(500, '08-10-2018').and_return(:transaction)
+      expect(transaction_klass).to receive(:new).with(date: '08-10-2018', credit: 500, balance: 500).and_return(:transaction)
       subject.deposit(500, '08-10-2018')
     end
 
@@ -38,7 +38,7 @@ describe Client do
       end
 
       it 'creates a new Transaction object' do
-        expect(transaction_klass).to receive(:new).with(500, '08-10-2018').and_return(:transaction)
+        expect(transaction_klass).to receive(:new).with(date: '08-10-2018', debit: 500, balance: 500).and_return(:transaction)
         subject.withdraw(500, '08-10-2018')
       end
 

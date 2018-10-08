@@ -10,16 +10,16 @@ class Client
   end
 
   def deposit(amount, date)
-    transaction = @transaction_klass.new(amount, date)
-    @transactions.push(transaction)
     @balance += amount
+    transaction = @transaction_klass.new(date: date, credit: amount, balance: @balance)
+    @transactions.push(transaction)
   end
 
   def withdraw(amount, date)
     insufficient_funds?(amount)
-    transaction = @transaction_klass.new(amount, date)
-    @transactions.push(transaction)
     @balance -= amount
+    transaction = @transaction_klass.new(date: date, debit: amount, balance: @balance)
+    @transactions.push(transaction)
   end
 
   def print_statement
