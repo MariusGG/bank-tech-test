@@ -40,6 +40,11 @@ describe Client do
       subject.withdraw(500, '08-10-2018')
     end
 
+    it 'adds the Transaction object into the transactions array' do
+      subject.withdraw(500, '08-10-2018')
+      expect(subject.transactions.length).to eq 1
+    end
+
     it 'subtracts the withdrawal amount from the balance' do
       expect { subject.withdraw(500, '08-10-2018') }.to change{ subject.balance }.by(-500)
     end

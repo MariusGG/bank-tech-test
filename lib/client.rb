@@ -16,6 +16,7 @@ class Client
 
   def withdraw(amount, date)
     transaction = @transaction_klass.new(amount, date)
+    @transactions.push(transaction)
     @balance -= amount
   end
 
