@@ -1,22 +1,25 @@
 module TransactionPrinter
   def self.pretty_print(transactions)
-    header = 'date || credit || debit || balance\n'
-    format_date(transactions)
-    format_numbers(transactions)
-    return header + format_history(transactions)
+    'date || credit || debit || balance\n' + format_history(transactions)
   end
 
   private
-
-  def self.format_date(transactions)
-    transactions.each { | transaction |
-      transaction.date.gsub!(/([-])/, '/')
-    }
-  end
-
+  
   def self.format_history(transactions)
     transactions.each.map { | transaction |
-      "#{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.balance}"
+      "#{format_date(transaction.date)} || "\
+      "#{format_number(transaction.credit)} || "\
+      "#{format_number(transaction.debit)} || "\
+      "#{format_number(transaction.balance)}"
     }.join('\n')
+  end
+
+  def self.format_date(date)
+    date.gsub!(/([-])/, '/')
+  end
+
+  def self.format_number(number)
+    return if number == nil
+    sprintf("%.2f", number)
   end
 end
