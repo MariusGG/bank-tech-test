@@ -86,5 +86,8 @@ I want the app to determine the date of my transaction
 - Why choose Ruby
 - Process and methodology
 - Things that could be improved
+- Add edge case for number input? What happens if float etc
+
+
 
 

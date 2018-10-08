@@ -5,29 +5,26 @@ class Client
 
   attr_reader :balance, :transactions
 
-  def initialize(transaction_klass = Transaction,
-                  transaction_printer = TransactionPrinter)
+  def initialize(transaction_klass = Transaction, printer = TransactionPrinter)
     @transaction_klass = transaction_klass
-    @transaction_printer = transaction_printer
+    @printer = printer
     @balance = 0
     @transactions = []
   end
 
   def deposit(amount)
     @balance += amount
-    transaction = @transaction_klass.new(credit: amount, balance: @balance)
-    @transactions.push(transaction)
+    @transactions.push(@transaction_klass.new(credit: amount, balance: @balance))
   end
 
   def withdraw(amount)
     insufficient_funds?(amount)
     @balance -= amount
-    transaction = @transaction_klass.new(debit: amount, balance: @balance)
-    @transactions.push(transaction)
+    @transactions.push(@transaction_klass.new(debit: amount, balance: @balance))
   end
 
   def print_statement
-    print @transaction_printer.pretty_print(@transactions)
+    print @printer.pretty_print(@transactions)
   end
 
   private
