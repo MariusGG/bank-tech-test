@@ -29,7 +29,7 @@ describe Client do
     end
 
     it 'adds the deposit amount to the balance' do
-      expect{ subject.deposit(500, '08-10-2018') }.to change{ subject.balance }.by(500)
+      expect { subject.deposit(500, '08-10-2018') }.to change { subject.balance }.by(500)
     end
   end
 
@@ -46,7 +46,7 @@ describe Client do
     end
 
     it 'subtracts the withdrawal amount from the balance' do
-      expect { subject.withdraw(500, '08-10-2018') }.to change{ subject.balance }.by(-500)
+      expect { subject.withdraw(500, '08-10-2018') }.to change { subject.balance }.by(-500)
     end
 
   end
