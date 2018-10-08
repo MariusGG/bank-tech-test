@@ -1,5 +1,7 @@
 # bank-tech-test
 
+[![Build Status](https://travis-ci.com/DaveLawes/bank-tech-test.svg?branch=master)](https://travis-ci.com/DaveLawes/bank-tech-test)
+
 This is a Ruby solution to the problem described in the following repo:
 https://github.com/makersacademy/course/blob/master/individual_challenges/bank_tech_test.md
 
