@@ -23,6 +23,11 @@ describe Client do
       subject.deposit(500, '08-10-2018')
     end
 
+    it 'adds the Transaction object into the transactions array' do
+      subject.deposit(500, '08-10-2018')
+      expect(subject.transactions.length).to eq 1
+    end
+
     it 'adds the deposit amount to the balance' do
       subject.deposit(500, '08-10-2018')
       expect(subject.balance).to eq 500
