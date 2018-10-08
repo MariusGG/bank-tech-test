@@ -2,8 +2,9 @@ class Client
 
   attr_reader :balance, :transactions
 
-  def initialize(transaction_klass = Transaction)
+  def initialize(transaction_klass = Transaction, transaction_printer = TransactionPrinter)
     @transaction_klass = transaction_klass
+    @transaction_printer = transaction_printer
     @balance = 0
     @transactions = []
   end
@@ -19,6 +20,10 @@ class Client
     transaction = @transaction_klass.new(amount, date)
     @transactions.push(transaction)
     @balance -= amount
+  end
+
+  def print_statement
+    @transaction_printer.pretty_print
   end
 
   private

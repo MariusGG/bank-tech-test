@@ -4,7 +4,8 @@ describe Client do
 
   let(:transaction) { double :transaction }
   let(:transaction_klass) { double :transaction_klass, new: transaction }
-  subject { described_class.new(transaction_klass) }
+  let(:transaction_printer) { double :transaction_printer }
+  subject { described_class.new(transaction_klass, transaction_printer) }
 
   describe '#initialize' do
     it 'initializes with balance equal to 0' do
@@ -55,6 +56,13 @@ describe Client do
       it 'raises error if withdrawal amount is greater than the balance' do
         expect { subject.withdraw(500, '08-10-2018') }.to raise_error('Insufficient funds')
       end
+    end
+  end
+
+  describe '#print_statement' do
+    it 'invokes #pretty_print on PrettyPrinter module' do
+      expect(transaction_printer).to receive(:pretty_print)
+      subject.print_statement
     end
   end
 
