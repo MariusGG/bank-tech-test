@@ -17,7 +17,7 @@ describe Transaction do
       @transaction = Transaction.new(credit: 500, balance: 500)
     end
 
-    it 'returns the date provided' do
+    it 'returns the determined date' do
       expect(@transaction.date).to eq '08/10/2018'
     end
 
@@ -29,7 +29,7 @@ describe Transaction do
       expect(@transaction.debit).to eq nil
     end
 
-    it 'returns the current balance' do
+    it 'returns the balance provided' do
       expect(@transaction.balance).to eq 500
     end
   end

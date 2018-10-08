@@ -51,14 +51,14 @@ describe Client do
     end
 
     context 'Given insufficient funds' do
-      it 'raises error if withdrawal amount is greater than the balance' do
+      it 'raises error message: Insufficent funds' do
         expect { subject.withdraw(500) }.to raise_error('Insufficient funds')
       end
     end
   end
 
   describe '#print_statement' do
-    it 'invokes #pretty_print on PrettyPrinter module' do
+    it 'calls #pretty_print on TransactionPrinter' do
       expect(transaction_printer).to receive(:pretty_print).with(subject.transactions)
       subject.print_statement
     end
