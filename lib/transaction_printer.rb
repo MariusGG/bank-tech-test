@@ -4,9 +4,9 @@ module TransactionPrinter
   end
 
   private
-  
+
   def self.format_history(transactions)
-    transactions.each.map { | transaction |
+    transactions.reverse.each.map { | transaction |
       "#{format_date(transaction.date)} || "\
       "#{format_number(transaction.credit)} || "\
       "#{format_number(transaction.debit)} || "\
