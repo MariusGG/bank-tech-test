@@ -1,12 +1,11 @@
 module TransactionPrinter
+
   def self.pretty_print(transactions)
     'date || credit || debit || balance\n' + format_history(transactions)
   end
 
-  private
-
   def self.format_history(transactions)
-    transactions.reverse.each.map { | transaction |
+    transactions.reverse_each.map { |transaction|
       "#{format_date(transaction.date)} || "\
       "#{format_number(transaction.credit)} || "\
       "#{format_number(transaction.debit)} || "\
@@ -19,7 +18,11 @@ module TransactionPrinter
   end
 
   def self.format_number(number)
-    return if number == nil
+    return if number.nil?
+
     sprintf("%.2f", number)
   end
+
+  private_class_method :format_history, :format_date, :format_number
+
 end
