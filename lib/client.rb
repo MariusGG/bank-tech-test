@@ -15,10 +15,16 @@ class Client
   end
 
   def withdraw(amount, date)
-    fail 'Insufficient funds' if amount > @balance
+    insufficient_funds?(amount)
     transaction = @transaction_klass.new(amount, date)
     @transactions.push(transaction)
     @balance -= amount
+  end
+
+  private
+
+  def insufficient_funds?(amount)
+    fail 'Insufficient funds' if amount > @balance
   end
 
 end
