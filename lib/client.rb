@@ -23,7 +23,7 @@ class Client
   end
 
   def print_statement
-    @transaction_printer.pretty_print
+    @transaction_printer.pretty_print(@transactions)
   end
 
   private

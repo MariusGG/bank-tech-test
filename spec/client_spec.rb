@@ -61,7 +61,7 @@ describe Client do
 
   describe '#print_statement' do
     it 'invokes #pretty_print on PrettyPrinter module' do
-      expect(transaction_printer).to receive(:pretty_print)
+      expect(transaction_printer).to receive(:pretty_print).with(subject.transactions)
       subject.print_statement
     end
   end
