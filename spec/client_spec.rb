@@ -38,6 +38,7 @@ describe Client do
 
     it 'creates a new Transaction object' do
       expect(transaction_klass).to receive(:new).with(500, '08-10-2018').and_return(:transaction)
+      subject.withdraw(500, '08-10-2018')
     end
 
   end
