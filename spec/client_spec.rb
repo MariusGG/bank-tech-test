@@ -32,6 +32,10 @@ describe Client do
     it 'raises an error if the amount is not legal tender' do
       expect { subject.deposit(500.005) }.to raise_error('Illegal tender!')
     end
+
+    it 'returns the current balance to improve user experience' do
+      expect(subject.deposit(500)).to eq('Current balance: 500')
+    end
   end
 
   describe '#withdraw' do
