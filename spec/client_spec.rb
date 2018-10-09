@@ -17,7 +17,7 @@ describe Client do
     it { is_expected.to respond_to(:deposit).with(1).argument }
 
     it 'creates a new Transaction object' do
-      expect(transaction_klass).to receive(:new).with(credit: 500, balance: 500)
+      expect(transaction_klass).to receive(:new).with(money: 500, balance: 500)
       subject.deposit(500)
     end
 
@@ -41,7 +41,7 @@ describe Client do
       end
 
       it 'creates a new Transaction object' do
-        expect(transaction_klass).to receive(:new).with(debit: 500, balance: 500)
+        expect(transaction_klass).to receive(:new).with(money: -500, balance: 500)
         subject.withdraw(500)
       end
 

@@ -15,18 +15,14 @@ class Client
   def deposit(money)
     raise 'Illegal tender!' if illegal_tender?(money)
 
-    @balance += money
-    @transactions.push(@transaction_klass.new(credit: money, balance: @balance))
-    return @balance
+    manage_transaction(money)
   end
 
   def withdraw(money)
     raise 'Illegal tender!' if illegal_tender?(money)
     raise 'Insufficient funds' if insufficient_funds?(money)
-    
-    @balance -= money
-    @transactions.push(@transaction_klass.new(debit: money, balance: @balance))
-    return @balance
+
+    manage_transaction(-money)
   end
 
   def account_statement
@@ -43,4 +39,9 @@ class Client
     money.round(2) != money
   end
 
+  def manage_transaction(money)
+    @balance += money
+    @transactions.push(@transaction_klass.new(money: money, balance: @balance))
+    return "Current balance: #{@balance}"
+  end
 end
