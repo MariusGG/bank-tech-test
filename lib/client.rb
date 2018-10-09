@@ -12,25 +12,25 @@ class Client
     @transactions = []
   end
 
-  def deposit(amount)
-    @balance += amount
-    @transactions.push(@transaction_klass.new(credit: amount, balance: @balance))
+  def deposit(money)
+    @balance += money
+    @transactions.push(@transaction_klass.new(credit: money, balance: @balance))
   end
 
-  def withdraw(amount)
-    insufficient_funds?(amount)
-    @balance -= amount
-    @transactions.push(@transaction_klass.new(debit: amount, balance: @balance))
+  def withdraw(money)
+    insufficient_funds?(money)
+    @balance -= money
+    @transactions.push(@transaction_klass.new(debit: money, balance: @balance))
   end
 
-  def print_statement
+  def account_statement
     print @printer.pretty_print(@transactions)
   end
 
   private
 
-  def insufficient_funds?(amount)
-    fail 'Insufficient funds' if amount > @balance
+  def insufficient_funds?(money)
+    fail 'Insufficient funds' if money > @balance
   end
 
 end

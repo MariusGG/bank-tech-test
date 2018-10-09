@@ -57,10 +57,10 @@ describe Client do
     end
   end
 
-  describe '#print_statement' do
+  describe '#account_statement' do
     it 'calls #pretty_print on TransactionPrinter' do
       expect(transaction_printer).to receive(:pretty_print).with(subject.transactions)
-      subject.print_statement
+      subject.account_statement
     end
   end
 

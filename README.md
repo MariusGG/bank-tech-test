@@ -31,7 +31,7 @@ To use the app open your favourite Ruby REPL, I've been using IRB.
 - `client = Client.new` to instantiate a new Client object
 - `client.deposit(500)` to deposit £500
 - `client.withdraw(250)` to withdraw £250
-- `client.print_statement` to get a pretty print of your account statement
+- `client.account_statement` to get a pretty print of your account statement
 
 NB: if you try to withdraw more money than you have in your account, you will see an error `Insufficient funds`.
 
