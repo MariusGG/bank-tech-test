@@ -7,6 +7,8 @@ https://github.com/makersacademy/course/blob/master/individual_challenges/bank_t
 
 It's a simple Ruby app that allows a client (via a REPL) to make deposits, withdrawals and see their account statement.
 
+<p><img src="./public/test_coverage.png" height="15px"></p>
+
 *Tags: RSpec, Ruby, BDD, SOLID*
 
 ## The App
@@ -37,8 +39,7 @@ NB: if you try to withdraw more money than you have in your account, you will se
 
 A typical series of commands will yield the following:
 
-<img src = >
-
+<p><img src="./public/use.png" height="=100px"></p>
 
 
 ## Specification
