@@ -28,6 +28,10 @@ describe Client do
     it 'adds the deposit amount to the balance' do
       expect { subject.deposit(500) }.to change { subject.balance }.by(500)
     end
+
+    it 'raises an error if the amount is not legal tender' do
+      expect { subject.deposit(500.005) }.to raise_error('Illegal tender!')
+    end
   end
 
   describe '#withdraw' do
@@ -47,6 +51,10 @@ describe Client do
 
       it 'subtracts the withdrawal amount from the balance' do
         expect { subject.withdraw(500) }.to change { subject.balance }.by(-500)
+      end
+
+      it 'raises an error if the client tries to withdraw illegal tender' do
+        expect { subject.withdraw(500.005) }.to raise_error('Illegal tender!')
       end
     end
 

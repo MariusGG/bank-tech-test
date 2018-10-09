@@ -77,12 +77,16 @@ So I don't lend money unintentionally
 I want to prevent clients from withdrawing more than their balance
 
 ```
-Including an extra feature to improve user experience:
+Including extra features to improve user experience:
 
 ```
 As a banking client
 So it is easier for me to deposit and withdraw money
 I want the app to determine the date of my transaction
+
+As a bank
+To allow only legal tender
+I want the app to only accept deposits or withdrawals to 2 decimal places
 ```
 
 

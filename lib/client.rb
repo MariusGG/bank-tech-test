@@ -13,12 +13,14 @@ class Client
   end
 
   def deposit(money)
+    raise 'Illegal tender!' if illegal_tender?(money)
     @balance += money
     @transactions.push(@transaction_klass.new(credit: money, balance: @balance))
   end
 
   def withdraw(money)
-    insufficient_funds?(money)
+    raise 'Illegal tender!' if illegal_tender?(money)
+    raise 'Insufficient funds' if insufficient_funds?(money)
     @balance -= money
     @transactions.push(@transaction_klass.new(debit: money, balance: @balance))
   end
@@ -30,7 +32,11 @@ class Client
   private
 
   def insufficient_funds?(money)
-    fail 'Insufficient funds' if money > @balance
+    money > @balance
+  end
+
+  def illegal_tender?(money)
+    "%g" % ("%.2f" % money) != "#{money}"
   end
 
 end
