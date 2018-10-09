@@ -2,7 +2,7 @@ require 'client'
 
 describe Client do
 
-  let(:transaction_klass) { double :transaction_klass, new: "" }
+  let(:transaction_klass) { double :transaction_klass, new: nil }
   let(:transaction_printer) { double :transaction_printer }
   subject { described_class.new(transaction_klass, transaction_printer) }
 

@@ -8,8 +8,7 @@ describe 'Feature: Withdraw' do
     end
 
     it 'subtracts the withdrawal amount from the balance' do
-      client.withdraw(500)
-      expect(client.balance).to eq 500
+      expect { client.withdraw(500) }.to change { client.balance }.by(-500)
     end
   end
 
