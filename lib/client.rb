@@ -36,7 +36,7 @@ class Client
   end
 
   def illegal_tender?(money)
-    "%g" % ("%.2f" % money) != "#{money}"
+    money.round(2) != money
   end
 
 end

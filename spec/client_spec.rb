@@ -56,6 +56,10 @@ describe Client do
       it 'raises an error if the client tries to withdraw illegal tender' do
         expect { subject.withdraw(500.005) }.to raise_error('Illegal tender!')
       end
+
+      it 'does not raise an error for other legal tender' do
+        expect { subject.withdraw(500.01) }.not_to raise_error
+      end
     end
 
     context 'Given insufficient funds' do
