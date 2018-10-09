@@ -11,7 +11,7 @@ class Transaction
   private
 
   def determine_date
-    Time.now.strftime("%d/%m/%Y")
+    Time.now
   end
 
   def assign_credit_and_debit(money)

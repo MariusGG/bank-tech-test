@@ -6,7 +6,7 @@ module TransactionPrinter
 
   def self.format_history(transactions)
     transactions.reverse_each.map { |transaction|
-      "#{transaction.date} || "\
+      "#{format_date(transaction.date)} || "\
       "#{format_number(transaction.credit)} || "\
       "#{format_number(transaction.debit)} || "\
       "#{format_number(transaction.balance)}"
@@ -17,6 +17,10 @@ module TransactionPrinter
     return if number.nil?
 
     sprintf("%.2f", number)
+  end
+
+  def self.format_date(date)
+    date.strftime("%d/%m/%Y")
   end
 
   private_class_method :format_history, :format_number

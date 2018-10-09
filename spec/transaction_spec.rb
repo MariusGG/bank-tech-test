@@ -24,7 +24,7 @@ describe Transaction do
     end
 
     it 'returns the determined date' do
-      expect(@transaction.date).to eq '08/10/2018'
+      expect(@transaction.date).to eq Time.mktime(2018, 10, 8)
     end
 
     it 'returns the credit provided' do

@@ -6,15 +6,7 @@ describe Client do
   let(:transaction_printer) { double :transaction_printer }
   subject { described_class.new(transaction_klass, transaction_printer) }
 
-  describe '#initialize' do
-    it 'initializes with balance equal to 0' do
-      expect(subject.balance).to eq 0
-    end
-  end
-
   describe '#deposit' do
-
-    it { is_expected.to respond_to(:deposit).with(1).argument }
 
     it 'creates a new Transaction object' do
       expect(transaction_klass).to receive(:new).with(money: 500, balance: 500)
