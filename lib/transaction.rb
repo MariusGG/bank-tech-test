@@ -15,7 +15,7 @@ class Transaction
   end
 
   def assign_credit_and_debit(money)
-    money < 0 ? @debit = money.abs : @credit = money
+    money.negative? ? @debit = money.abs : @credit = money
   end
 
 end
