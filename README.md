@@ -145,13 +145,16 @@ To highlight my approach to solving this problem:
 	4. write code to make the test pass, or at least change the error until I get to green!
 	5. commit with a semantic message and add a comment if I feel it is necessary.
 	6. refactor, ensure my tests all pass, then commmit again.
-* Repeat steps 1-6 until all my feature tests pass.
+* Repeat steps i-vi until all my feature tests pass.
 
 
 ## Areas of Improvement
 
-- Things that could be improved
-- Add edge case for number input? What happens if float etc
+I could add an edge case for clients attempting to deposit/withdraw £00.00. In this case a transaction is still created despite the balance not changing state.
+
+I chose to store all information as pounds and pennies (as decimal places). The primary reason for this was to allow the user to enter information as they are accustomed to (£PP.pp). With more complex logic (e.g. interest accrued on savings, fines on overdrafts) the internal manipulation of currency may be easier to manage entirely as pennies. 
+
+
 
 
 
